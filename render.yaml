@@ -1,10 +1,7 @@
 services:
-  - type: web
+  - type: static
     name: recomendaciones-frontend
-    env: node
-    rootDir: frontend
     buildCommand: npm install && npm run build
-    startCommand: serve -s build
     staticPublishPath: build
     plan: free
     region: oregon
@@ -12,9 +9,9 @@ services:
   - type: web
     name: recomendaciones-backend
     env: node
+    rootDir: backend          # <-- aquí está el detalle clave
     buildCommand: npm install
     startCommand: node index.js
-    rootDir: backend
     plan: free
     region: oregon
     envVars:
