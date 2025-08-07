@@ -1,17 +1,14 @@
 services:
   - type: static
     name: recomendaciones-frontend
-    env: node
-    rootDir: frontend
+    rootDir: .                 # raíz del repositorio
     buildCommand: npm install && npm run build
-    startCommand: npm run serve
-    staticPublishPath: build
+    staticPublishPath: build   # carpeta build en raíz
     plan: free
     region: oregon
 
   - type: web
     name: recomendaciones-backend
-    env: node
     rootDir: backend
     buildCommand: cd backend && npm install
     startCommand: node server.js
