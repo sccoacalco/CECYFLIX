@@ -1,15 +1,17 @@
 services:
-  - type: static
+  - type: web
     name: recomendaciones-frontend
+    env: node
+    rootDir: frontend         # Asegúrate que esta carpeta contiene tu package.json
     buildCommand: npm install && npm run build
-    staticPublishPath: build
+    startCommand: npm run serve
     plan: free
     region: oregon
 
   - type: web
     name: recomendaciones-backend
     env: node
-    rootDir: backend          # <-- aquí está el detalle clave
+    rootDir: backend
     buildCommand: cd backend && npm install
     startCommand: node backend/server.js
     plan: free
@@ -19,4 +21,3 @@ services:
         value: mongodb+srv://juanfloresico:P3uwVaXSlWFfd3p9@cineversecluster.jipvdhb.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=cineverseCluster
       - key: OPENROUTER_API_KEY
         value: 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
-#un cambio
