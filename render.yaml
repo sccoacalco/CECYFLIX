@@ -3,7 +3,7 @@ services:
     name: recomendaciones-frontend
     env: node
     rootDir: frontend         # Asegúrate que esta carpeta contiene tu package.json
-    buildCommand: npm install && npm run build
+    buildCommand: cd frontend && npm install && npm run build
     startCommand: npm run serve
     plan: free
     region: oregon
