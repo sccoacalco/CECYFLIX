@@ -5,6 +5,7 @@ services:
     rootDir: frontend         # Asegúrate que esta carpeta contiene tu package.json
     buildCommand: cd frontend && npm install && npm run build
     startCommand: npm run serve
+    staticPublishPath: frontend/build
     plan: free
     region: oregon
 
