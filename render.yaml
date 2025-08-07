@@ -1,5 +1,4 @@
 services:
-    services:
   - type: static
     name: recomendaciones-frontend
     env: node
@@ -10,13 +9,12 @@ services:
     plan: free
     region: oregon
 
-
   - type: web
     name: recomendaciones-backend
     env: node
     rootDir: backend
     buildCommand: cd backend && npm install
-    startCommand: node backend/server.js
+    startCommand: node server.js
     plan: free
     region: oregon
     envVars:
