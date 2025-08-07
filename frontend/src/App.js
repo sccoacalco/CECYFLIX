@@ -10,14 +10,16 @@ function App() {
 
   // Al montar el componente, carga las películas desde el backend
   useEffect(() => {
-    fetch('/api/peliculas')
-      .then(res => res.json())
-      .then(data => {
-        setPeliculas(data);
-        setPeliculasFiltradas(data);
-      })
-      .catch(err => console.error('Error al obtener películas:', err));
-  }, []);
+  fetch('https://recomendaciones-backend.onrender.com/api/peliculas', {
+    method: 'GET',
+  })
+    .then(res => res.json())
+    .then(data => {
+      setPeliculas(data);
+      setPeliculasFiltradas(data);
+    })
+    .catch(err => console.error('Error al obtener películas:', err));
+}, []);
 
   // Función para búsqueda por título o género
   const handleBuscar = (e) => {
