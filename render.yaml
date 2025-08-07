@@ -1,9 +1,9 @@
 services:
   - type: static
     name: recomendaciones-frontend
-    rootDir: .                 # raíz del repositorio
+    rootDir: .
     buildCommand: npm install && npm run build
-    staticPublishPath: build   # carpeta build en raíz
+    staticPublishPath: build
     plan: free
     region: oregon
 
