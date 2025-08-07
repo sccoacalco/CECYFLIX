@@ -1,12 +1,22 @@
 services:
   - type: web
-    name: recomendaciones-backend
+    name: recomendaciones-frontend
     env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: serve -s build
+    staticPublishPath: build
     plan: free
     region: oregon
+
+  - type: web
+    name: recomendaciones-backend
+    env: node
     buildCommand: npm install
     startCommand: node index.js
     rootDir: backend
+    plan: free
+    region: oregon
     envVars:
       - key: MONGO_URI
         value: mongodb+srv://juanfloresico:P3uwVaXSlWFfd3p9@cineversecluster.jipvdhb.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=cineverseCluster
