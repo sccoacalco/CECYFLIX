@@ -2,11 +2,12 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 const peliculasRouter = require('./routes/peliculas');
 require('dotenv').config();
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(cors());
@@ -46,6 +47,15 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Rutas de películas
 app.use('/api/peliculas', peliculasRouter);
+
+// -----------------------------
+// SERVIR FRONTEND EN PRODUCCIÓN
+// -----------------------------
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 // Inicio del servidor
 app.listen(PORT, () => {
